@@ -1,0 +1,42 @@
+.carousel {
+    display: flex;
+    overflow-x: scroll; /* For scrolling effect */
+    width: 1312px;
+    margin: auto;
+  }
+  
+  .slide {
+   width:768px;
+   gap: 32px; /* Make each slide the same width */
+    margin: auto;
+    text-align: center;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: auto;
+  }
+  /* Carousel.css */
+.carousel {
+  position: relative;
+  width: 1312px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.slides-container {
+  display: flex;
+  overflow: hidden;
+  
+}
+
+.carousel-button {
+  background-color: #EEEEEE;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+  

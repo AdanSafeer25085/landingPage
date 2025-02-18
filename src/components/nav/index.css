@@ -1,0 +1,33 @@
+.gradient-border {
+    position: relative;
+    padding-bottom: 2px; /* Ensure content doesn't overlap the border */
+  }
+  
+  .gradient-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #5799DD 0%, #79B48C 25%, #FCD536 50%, #DD6602 100%);
+  }
+  /* Add this to your global CSS file */
+.underline-custom {
+  position: relative;
+}
+
+.underline-custom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px; 
+  width: 0;
+  height: 2px; 
+  background-color: #DD6602;
+  transition: width 0.6s ease-in-out;
+}
+
+.underline-custom:hover::after {
+  width: 100%;
+}

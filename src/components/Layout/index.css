@@ -1,0 +1,33 @@
+.custom-bullet2 {
+    position: relative;
+    padding-left: 28px; /* Adjust to provide space for the bullet */
+  }
+  .custom-bullet3 {
+    position: relative;
+    padding-left: 28px; /* Adjust to provide space for the bullet */
+  }
+  
+  .custom-bullet2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color:#5799DD;
+    ;
+    border-radius: 50%; /* Make the bullet round */
+  }
+  .custom-bullet3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color:#666666;
+    ;
+    border-radius: 50%; /* Make the bullet round */
+  }

@@ -1,0 +1,22 @@
+.custom-bullet {
+  position: relative;
+  padding-left: 28px; /* Adjust to provide space for the bullet */
+  margin-bottom: 8px; /* Space between list items */
+}
+
+.custom-bullet::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #1FAA98;
+  border-radius: 50%; /* Make the bullet round */
+}
+
+.your-class {
+  background-image: url('/Users/kpklaptops/Desktop/my-tailwind-app/public/images/1st-img.png');  background-size: cover;
+  background-position: center;
+}
