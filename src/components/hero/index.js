@@ -37,8 +37,8 @@ const Hero = () => {
   };
 
   return (
-    <div className="max-w-[1440px] h-[648px] mx-auto py-[112px] px-[64px] gap-[80px] bg-[#FFFFFF]">
-      <div className="max-w-[1312px] h-[424px] flex gap-[80px]">
+    <div className="w-[1440px] h-[648px] mx-auto py-[112px] px-[64px] gap-[80px] bg-[#FFFFFF]">
+      <div className="w-[1312px] h-[424px] flex gap-[80px]">
         <div className="w-[500px] flex flex-col gap-[32px]">
           <div className="flex flex-col gap-[24px]">
             <h2 className="font-semibold text-[48px] leading-[57.6px] text-[#000000]">
