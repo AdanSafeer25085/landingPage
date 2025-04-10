@@ -2,52 +2,52 @@ import Card from './Card';
 function Team() {
     const cardsData = [
         {
-          backgroundImage: '/images/Image%20Wrapper.png',
-          profileImage: '/images/Worker Image.png',
+          backgroundImage: '/images/Image-Wrapper.png',
+          profileImage: '/images/Worker-Image.png',
           title: 'Software Developers',
           priceRange: '$1,000 - $2,500 /month (avg.)'
         },
         {
-          backgroundImage: '/images/Image%20Wrapper2.png',
-          profileImage: '/images/Worker Image2.png',
+          backgroundImage: '/images/Image-Wrapper2.png',
+          profileImage: '/images/Worker-Image2.png',
           title: 'Designers',
           priceRange: '$800 - $1,800 /month (avg.)'
         },
         {
-          backgroundImage: '/images/Image%20Wrapper3.png',
-          profileImage: '/images/Worker image3.png',
+          backgroundImage: '/images/Image-Wrapper3.png',
+          profileImage: '/images/Worker-Image3.png',
           title: 'Marketing Experts',
           priceRange: '$900 - $2,000 /month (avg.)'
         },
         {
-            backgroundImage: '/images/Image%20Wrapper4.png',
-            profileImage: '/images/Worker image4.png',
+            backgroundImage: '/images/Image-Wrapper4.png',
+            profileImage: '/images/Worker-Image4.png',
             title: 'Marketing Experts',
             priceRange: '$900 - $2,000 /month (avg.)'
           }
       ];
       const cardsData2 = [
         {
-          backgroundImage: '/images/Image%20Wrapper5.png',
-          profileImage: '/images/Worker image5.png',
+          backgroundImage: '/images/Image-Wrapper5.png',
+          profileImage: '/images/Worker-Image5.png',
           title: 'Adan',
           priceRange: '$1,000 - $2,500 /month (avg.)'
         },
         {
-          backgroundImage: '/images/Image%20Wrapper6.png',
-          profileImage: '/images/Worker image6.png',
+          backgroundImage: '/images/Image-Wrapper6.png',
+          profileImage: '/images/Worker-Image6.png',
           title: 'Designers',
           priceRange: '$800 - $1,800 /month (avg.)'
         },
         {
-          backgroundImage: '/images/Image%20Wrapper7.png',
-          profileImage: '/images/Worker image7.png',
+          backgroundImage: '/images/Image-Wrapper7.png',
+          profileImage: '/images/Worker-Image7.png',
           title: 'Marketing Experts',
           priceRange: '$900 - $2,000 /month (avg.)'
         },
         {
-            backgroundImage: '/images/Image%20Wrapper8.png',
-            profileImage: '/images/Worker image8.png',
+            backgroundImage: '/images/Image-Wrapper8.png',
+            profileImage: '/images/Worker-Image8.png',
             title: 'Marketing Experts',
             priceRange: '$900 - $2,000 /month (avg.)'
           }

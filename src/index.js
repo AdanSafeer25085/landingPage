@@ -5,7 +5,7 @@ import './tailwind-output.css';
 import reportWebVitals from './reportWebVitals';
 import Nav from './components/nav';
 import Header from './components/header';
-import Container from './components/Layout';
+import Container from './components/Layout/index.js';
 import Carousel from './components/carousel/carousel';
 import Number from './components/numberDiv';
 import Salery from './components/salerySection';
@@ -32,7 +32,5 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

@@ -39,7 +39,7 @@ function Header() {
           <img
             className="w-[324px] h-[486px] absolute top-[207px] rounded-[8px]"
             src="/images/2nd-img.png"
-            alt="Description of the image"
+            alt="error"
           />
         </div>
       </div>
