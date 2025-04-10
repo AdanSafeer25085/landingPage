@@ -3,7 +3,7 @@ import './index.css'
 function Container() {
   return (
     <div
-      className="w-[1440px] h-[840px] m-[auto] gap-[80px] opacity-[0px] bg-[#F7F7F7]"
+      className="w-[1440px] h-[840px] m-[auto] gap-[80px] bg-[#F7F7F7]"
       style={{ padding: "112px 64px" }}
     >
       <div className="w-[1312px] h-[620px] flex gap-[80px] opacity-[0px]">
