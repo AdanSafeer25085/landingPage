@@ -17,6 +17,6 @@
 }
 
 .your-class {
-  background-image: url('/Users/kpklaptops/Desktop/my-tailwind-app/public/images/1st-img.png');  background-size: cover;
+  background-image: url('/public/images/1st-img.png');  background-size: cover;
   background-position: center;
 }

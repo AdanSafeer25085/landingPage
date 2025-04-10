@@ -1,5 +1,4 @@
 import "./index.css";
-// import image from '../images/2nd-image.png'
 
 function Header() {
   return (
