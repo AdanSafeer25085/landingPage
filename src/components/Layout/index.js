@@ -6,7 +6,7 @@ function Container() {
       className="w-[1440px] h-[840px] m-[auto] gap-[80px] bg-[#F7F7F7]"
       style={{ padding: "112px 64px" }}
     >
-      <div className="w-[1312px] h-[620px] flex gap-[80px] opacity-[0px]">
+      <div className="w-[1312px] h-[620px] flex gap-[80px]">
         <div className="w-[616px] h-[620px]">
           <div className="w-[616px] h-[211px] flex flex-col gap-[16px]">
             <div className="w-[616px] h-[21px] font-semibold text-[14px] leading-[21px] text-[#666666]">
@@ -24,7 +24,7 @@ function Container() {
           </div>
         </div>
         <div
-          className="w-[616px] h-[620px] gap-[16px] opacity-[0px]"style={{ padding: "400px 0px 0px 0px" }}>
+          className="w-[616px] h-[620px] gap-[16px]"style={{ padding: "400px 0px 0px 0px" }}>
           <div
             className="w-[616px] h-[220px] gap-[16px]"
             style={{ padding: "0px 46px 0px 46px" }}
