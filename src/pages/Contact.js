@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PageLayout from '../components/Layout/PageLayout';
+import CustomDropdown from '../components/CustomDropdown';
 import '../components/header/index.css';
 
 const Contact = () => {
@@ -11,6 +12,24 @@ const Contact = () => {
     message: '',
     hiringTimeframe: '2-4 weeks'
   });
+
+  const roleOptions = [
+    { value: 'developer', label: 'Software Developer' },
+    { value: 'designer', label: 'UI/UX Designer' },
+    { value: 'marketing', label: 'Marketing Specialist' },
+    { value: 'sales', label: 'Sales Representative' },
+    { value: 'customer-support', label: 'Customer Support' },
+    { value: 'virtual-assistant', label: 'Virtual Assistant' },
+    { value: 'data-analyst', label: 'Data Analyst' },
+    { value: 'other', label: 'Other' }
+  ];
+
+  const timeframeOptions = [
+    { value: '1-2 weeks', label: '1-2 weeks' },
+    { value: '2-4 weeks', label: '2-4 weeks' },
+    { value: '1-2 months', label: '1-2 months' },
+    { value: '3+ months', label: '3+ months' }
+  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -102,39 +121,26 @@ const Contact = () => {
               </div>
               <div>
                 <label className="block text-[16px] font-semibold mb-[8px]">Role You're Hiring For *</label>
-                <select
-                  name="role"
+                <CustomDropdown
+                  options={roleOptions}
                   value={formData.role}
                   onChange={handleInputChange}
-                  className="w-full p-[12px] rounded-[8px] border border-gray-300 focus:border-black focus:outline-none"
+                  placeholder="Select a role"
+                  name="role"
                   required
-                >
-                  <option value="">Select a role</option>
-                  <option value="developer">Software Developer</option>
-                  <option value="designer">UI/UX Designer</option>
-                  <option value="marketing">Marketing Specialist</option>
-                  <option value="sales">Sales Representative</option>
-                  <option value="customer-support">Customer Support</option>
-                  <option value="virtual-assistant">Virtual Assistant</option>
-                  <option value="data-analyst">Data Analyst</option>
-                  <option value="other">Other</option>
-                </select>
+                />
               </div>
             </div>
 
             <div className="mb-[24px]">
               <label className="block text-[16px] font-semibold mb-[8px]">Hiring Timeframe</label>
-              <select
-                name="hiringTimeframe"
+              <CustomDropdown
+                options={timeframeOptions}
                 value={formData.hiringTimeframe}
                 onChange={handleInputChange}
-                className="w-full p-[12px] rounded-[8px] border border-gray-300 focus:border-black focus:outline-none"
-              >
-                <option value="1-2 weeks">1-2 weeks</option>
-                <option value="2-4 weeks">2-4 weeks</option>
-                <option value="1-2 months">1-2 months</option>
-                <option value="3+ months">3+ months</option>
-              </select>
+                placeholder="Select timeframe"
+                name="hiringTimeframe"
+              />
             </div>
 
             <div className="mb-[32px]">
