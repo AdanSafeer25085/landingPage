@@ -42,7 +42,7 @@ function Carousel() {
       <div className="w-full max-w-[1312px] flex items-center justify-between gap-[48px]">
         <button 
           onClick={handlePrevious} 
-          className="w-12 h-12 rounded-full bg-[#EEEEEE] hover:bg-gray-300 flex items-center justify-center transition-colors flex-shrink-0"
+          className="w-12 h-12 rounded-full bg-transparent hover:bg-gray-300 flex items-center justify-center transition-colors flex-shrink-0"
           style={{ borderRadius: "50%" }}
         >
           <img className='w-6 h-6' src='/Testimonial/Icon1.png' alt="Previous Slide Icon" />
@@ -69,7 +69,7 @@ function Carousel() {
         
         <button 
           onClick={handleNext} 
-          className="w-12 h-12 rounded-full bg-[#EEEEEE] hover:bg-gray-300 flex items-center justify-center transition-colors flex-shrink-0"
+          className="w-12 h-12 rounded-full bg-transparent hover:bg-gray-300 flex items-center justify-center transition-colors flex-shrink-0"
           style={{ borderRadius: "50%" }}
         >
           <img className='w-6 h-6' src='/Testimonial/Icon.png' alt="Next Slide Icon" />
