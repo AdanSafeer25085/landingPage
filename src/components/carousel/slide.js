@@ -5,7 +5,7 @@ import './slide.css'; // Import CSS specific to Slide component
 
 function Slide({ title, description, image, additionalImage, additionalDescription , style }) {
   return (
-    <div className="slide transition-all duration-[1s] ease-in-out py-4"  style={{display:"flex",flexDirection:"column" , alignItems:"center",borderWidth:"0.5px", borderStyle:"solid", borderImage:"linear-gradient( red,orange,yellow,green,blue,indigo,violet) 1"}}>
+    <div className="slide transition-all duration-[1s] ease-in-out py-4 h-full flex flex-col items-center justify-center">
       <OptimizedImage 
         className='image1' 
         src={image} 

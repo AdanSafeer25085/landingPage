@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PageLayout from '../components/Layout/PageLayout';
-import OptimizedImage from '../components/OptimizedImage';
 import '../components/header/index.css';
 
 const Contact = () => {
@@ -31,42 +30,32 @@ const Contact = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <div className="w-[1440px] m-auto h-[900px] flex">
-        <div className="flex flex-col gap-[16px] w-[720px] h-[900px] m-auto justify-center" style={{padding:"0px 80px 0px 64px"}}>
+      <div className="w-[1440px] m-auto h-[700px] flex">
+        <div className="flex flex-col gap-[16px] w-[720px] h-[700px] m-auto justify-center" style={{padding:"0px 80px 0px 64px"}}>
           <div className="w-[576px] h-[252px] flex flex-col gap-[24px]">
-            <h1 className="font-Metropolis text-[48px] font-semibold w-[576px] h-[174px] leading-[57.6px]">
+            <h1 className="font-Metropolis text-[48px] font-semibold w-[576px] h-[174px] leading-[57.6px] text-center">
               Start Hiring Top Latin American Talent
             </h1>
-            <p className="font-Metropolis text-[18px] font-extralight w-[576px] h-[54px] leading-[27px] text-[#666666]">
+            <p className="font-Metropolis text-[18px] font-extralight w-[576px] h-[54px] leading-[27px] text-[#666666] text-center">
               Fill out the form below and we'll match you with qualified candidates within 2 weeks.
             </p>
           </div>
-          <li className="w-[576px] h-[104px] gap-[16px] list-none">
+          <li className="w-[576px] h-[104px] gap-[16px] list-none text-center">
             <ul>
-              <li className="custom-bullet">Zero-risk replacement guarantee</li>
-              <li className="custom-bullet">
+              <li className="">Zero-risk replacement guarantee</li>
+              <li className="">
                 Save up to 70% compared to U.S. equivalents
               </li>
-              <li className="custom-bullet">
+              <li className="">
                 Qualified candidates ready to interview within 2 weeks
               </li>
             </ul>
           </li>
         </div>
-        <div className="w-[720px] h-[900px] relative">
-          <div className="w-[640px] h-[900px] your-class absolute top-[-0.22px] left-[80px]"></div>
-          <OptimizedImage
-            className="w-[324px] h-[486px] absolute top-[207px] rounded-[8px]"
-            src="/images/2nd-img.png"
-            alt="Remote Latin American talent"
-            width={324}
-            height={486}
-          />
-        </div>
       </div>
 
       {/* Contact Form Section */}
-      <div className="w-[1440px] m-auto py-[112px] px-[64px] bg-[#FFFFFF]">
+      <div className="w-[1440px] m-auto pb-[100px] px-[64px] bg-[#FFFFFF]">
         <div className="max-w-[800px] m-auto">
           <div className="text-center mb-[48px]">
             <h2 className="text-[36px] font-semibold mb-[16px]">Get Started Today</h2>

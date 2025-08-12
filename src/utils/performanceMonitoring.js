@@ -1,14 +1,6 @@
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
 const sendToAnalytics = (metric) => {
-  const body = JSON.stringify({
-    name: metric.name,
-    value: metric.value,
-    delta: metric.delta,
-    id: metric.id,
-    entries: metric.entries,
-  });
-
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {
     console.log(`[Web Vitals] ${metric.name}:`, metric.value);
@@ -59,7 +51,13 @@ const sendToAnalytics = (metric) => {
   // fetch('/api/analytics', {
   //   method: 'POST',
   //   headers: { 'Content-Type': 'application/json' },
-  //   body,
+  //   body: JSON.stringify({
+  //     name: metric.name,
+  //     value: metric.value,
+  //     delta: metric.delta,
+  //     id: metric.id,
+  //     entries: metric.entries,
+  //   }),
   // });
 };
 
