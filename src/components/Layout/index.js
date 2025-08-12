@@ -5,6 +5,7 @@ function Container() {
     <div
       className="w-[1440px] h-[840px] m-[auto] gap-[80px] bg-[#F7F7F7]"
       style={{ padding: "112px 64px" }}
+      id="how-it-works"
     >
       <div className="w-[1312px] h-[620px] flex gap-[80px]">
         <div className="w-[616px] h-[620px]">

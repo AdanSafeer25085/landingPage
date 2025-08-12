@@ -38,7 +38,7 @@ function Carousel() {
   // };
 
   return (
-    <div className='w-[1440px] m-auto h-[676px] flex gap-[80px] Carousel' >
+    <div className='w-[1440px] m-auto h-[676px] flex gap-[80px] Carousel' id="testimonials">
       <div className="carousel h-[390px] gap-[48px] flex justify-between">
         {/* <button onClick={handlePrevious} className="carousel-button" style={{borderRadius:"50%"}}>
           <img className='m-[auto] ' src='/Testimonial/Icon1.png' alt="Previous Slide Icon" /></button> */}

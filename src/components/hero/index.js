@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import useButtonAction from "../../hooks/useButtonAction";
 
 const Hero = () => {
   const [openIndex, setOpenIndex] = useState(null); // Track the index of the open question
+  const { handleBookCall } = useButtonAction();
 
   // Sample FAQs data
   const faqs = [
@@ -48,7 +50,10 @@ const Hero = () => {
               Still have questions? Book a call to learn more
             </p>
           </div>
-          <button className="w-[132px] h-[48px] rounded-[12px] border-[1px] border-[#000000] py-[12px] px-[24px] flex items-center justify-center">
+          <button 
+            className="w-[132px] h-[48px] rounded-[12px] border-[1px] border-[#000000] py-[12px] px-[24px] flex items-center justify-center transition-all hover:bg-[#000000] hover:text-white"
+            onClick={handleBookCall}
+          >
             <span className="font-light text-[15px] leading-[24px]">Book a call</span>
           </button>
         </div>

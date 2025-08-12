@@ -54,7 +54,7 @@ function Team() {
       ];
 
   return (
-    <div className="w-[1440px] m-auto h-[1326px] py-[112px] px-[64px] flex flex-col gap-[80px]">
+    <div className="w-[1440px] m-auto h-[1326px] py-[112px] px-[64px] flex flex-col gap-[80px]" id="roles">
       <div className="w-[768px] h-[204px] flex flex-col gap-[16px]">
         <div className="w-[47px] h-[21px] font-semibold text-[14px] leading-[21px] text-[#666666]">
           Roles
