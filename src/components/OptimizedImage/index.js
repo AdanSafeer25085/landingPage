@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const OptimizedImage = ({ 
+const OptimizedImage = React.memo(({ 
   src, 
   alt, 
   className = '', 
@@ -12,7 +12,10 @@ const OptimizedImage = ({
   threshold = 100,
   ...props 
 }) => {
-  const lowQualityPlaceholder = placeholderSrc || `data:image/svg+xml,%3Csvg width='${width || 100}' height='${height || 100}' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E`;
+  const lowQualityPlaceholder = useMemo(() => 
+    placeholderSrc || `data:image/svg+xml,%3Csvg width='${width || 100}' height='${height || 100}' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E`,
+    [placeholderSrc, width, height]
+  );
 
   return (
     <LazyLoadImage
@@ -24,9 +27,11 @@ const OptimizedImage = ({
       placeholderSrc={lowQualityPlaceholder}
       effect="blur"
       threshold={threshold}
+      loading="lazy"
+      decoding="async"
       {...props}
     />
   );
-};
+});
 
 export default OptimizedImage;

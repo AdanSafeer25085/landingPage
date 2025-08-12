@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import PageLayout from '../components/Layout/PageLayout';
 import CustomDropdown from '../components/CustomDropdown';
 import '../components/header/index.css';
@@ -13,7 +13,7 @@ const Contact = () => {
     hiringTimeframe: '2-4 weeks'
   });
 
-  const roleOptions = [
+  const roleOptions = useMemo(() => [
     { value: 'developer', label: 'Software Developer' },
     { value: 'designer', label: 'UI/UX Designer' },
     { value: 'marketing', label: 'Marketing Specialist' },
@@ -22,29 +22,29 @@ const Contact = () => {
     { value: 'virtual-assistant', label: 'Virtual Assistant' },
     { value: 'data-analyst', label: 'Data Analyst' },
     { value: 'other', label: 'Other' }
-  ];
+  ], []);
 
-  const timeframeOptions = [
+  const timeframeOptions = useMemo(() => [
     { value: '1-2 weeks', label: '1-2 weeks' },
     { value: '2-4 weeks', label: '2-4 weeks' },
     { value: '1-2 months', label: '1-2 months' },
     { value: '3+ months', label: '3+ months' }
-  ];
+  ], []);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-  };
+  }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     // Here you would typically send the data to your backend
     alert('Thank you! We will contact you within 24 hours to discuss your hiring needs.');
-  };
+  }, [formData]);
 
   return (
     <PageLayout>

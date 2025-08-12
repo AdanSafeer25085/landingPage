@@ -57,10 +57,29 @@ const useButtonAction = () => {
     }
   }, [navigate, location.pathname]);
 
+  const handleHome = useCallback(() => {
+    console.log('Logo/Home clicked');
+    if (window.gtag) {
+      window.gtag('event', 'click', {
+        'event_category': 'Navigation',
+        'event_label': 'Home Logo'
+      });
+    }
+    
+    // Navigate to home and scroll to top
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      // If already on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [navigate, location.pathname]);
+
   return {
     handleStartHiring,
     handleBookCall,
-    handleNavigation
+    handleNavigation,
+    handleHome
   };
 };
 

@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import './CustomDropdown.css';
 
-const CustomDropdown = ({ 
+const CustomDropdown = React.memo(({ 
   options, 
   value, 
   onChange, 
@@ -13,22 +13,22 @@ const CustomDropdown = ({
   const [selectedOption, setSelectedOption] = useState(value || '');
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+  const handleClickOutside = useCallback((event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  }, []);
 
+  useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [handleClickOutside]);
 
   useEffect(() => {
     setSelectedOption(value || '');
   }, [value]);
 
-  const handleSelect = (optionValue, optionLabel) => {
+  const handleSelect = useCallback((optionValue) => {
     setSelectedOption(optionValue);
     setIsOpen(false);
     if (onChange) {
@@ -39,21 +39,25 @@ const CustomDropdown = ({
         }
       });
     }
-  };
+  }, [onChange, name]);
 
-  const getSelectedLabel = () => {
+  const handleToggle = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
+  const selectedLabel = useMemo(() => {
     const selected = options.find(opt => opt.value === selectedOption);
     return selected ? selected.label : placeholder;
-  };
+  }, [options, selectedOption, placeholder]);
 
   return (
     <div className="relative w-full" ref={dropdownRef}>
       <div
         className="w-full p-[12px] rounded-[8px] border border-gray-300 focus:border-black bg-white cursor-pointer flex justify-between items-center"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
       >
         <span className={selectedOption ? 'text-black' : 'text-gray-500'}>
-          {getSelectedLabel()}
+          {selectedLabel}
         </span>
         <svg 
           className={`w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}
@@ -69,9 +73,9 @@ const CustomDropdown = ({
         <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-[8px] shadow-lg z-50 max-h-[125px] custom-dropdown-scroll">
           {options.map((option, index) => (
             <div
-              key={index}
+              key={option.value || index}
               className="p-[12px] hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0"
-              onClick={() => handleSelect(option.value, option.label)}
+              onClick={() => handleSelect(option.value)}
             >
               {option.label}
             </div>
@@ -97,6 +101,6 @@ const CustomDropdown = ({
       </select>
     </div>
   );
-};
+});
 
 export default CustomDropdown;

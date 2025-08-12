@@ -1,64 +1,56 @@
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
+// Performance thresholds
+const PERFORMANCE_THRESHOLDS = {
+  LCP: 2500,
+  FID: 100,
+  CLS: 0.1,
+  FCP: 1800,
+  TTFB: 800
+};
+
+// Batch analytics calls for better performance
+let analyticsQueue = [];
+let isProcessing = false;
+
+const processAnalyticsQueue = () => {
+  if (isProcessing || analyticsQueue.length === 0) return;
+  
+  isProcessing = true;
+  const batch = analyticsQueue.splice(0);
+  
+  // Process batch in next tick to avoid blocking UI
+  setTimeout(() => {
+    batch.forEach(metric => {
+      if (window.gtag) {
+        window.gtag('event', metric.name, {
+          value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+          event_category: 'Web Vitals',
+          event_label: metric.id,
+          non_interaction: true,
+        });
+      }
+    });
+    isProcessing = false;
+  }, 0);
+};
+
 const sendToAnalytics = (metric) => {
-  // Log to console in development
+  // Log to console in development (with throttling)
   if (process.env.NODE_ENV === 'development') {
     console.log(`[Web Vitals] ${metric.name}:`, metric.value);
     
-    // Add performance warnings
-    switch(metric.name) {
-      case 'LCP':
-        if (metric.value > 2500) {
-          console.warn('[Performance] LCP is above 2.5s - Consider optimizing largest contentful paint');
-        }
-        break;
-      case 'FID':
-        if (metric.value > 100) {
-          console.warn('[Performance] FID is above 100ms - Consider optimizing JavaScript execution');
-        }
-        break;
-      case 'CLS':
-        if (metric.value > 0.1) {
-          console.warn('[Performance] CLS is above 0.1 - Consider fixing layout shifts');
-        }
-        break;
-      case 'FCP':
-        if (metric.value > 1800) {
-          console.warn('[Performance] FCP is above 1.8s - Consider optimizing first contentful paint');
-        }
-        break;
-      case 'TTFB':
-        if (metric.value > 800) {
-          console.warn('[Performance] TTFB is above 800ms - Consider optimizing server response time');
-        }
-        break;
-      default:
-        break;
+    const threshold = PERFORMANCE_THRESHOLDS[metric.name];
+    if (threshold && metric.value > threshold) {
+      console.warn(`[Performance] ${metric.name} is above ${threshold}${metric.name === 'CLS' ? '' : 'ms'} - Consider optimization`);
     }
   }
 
-  // Send to Google Analytics if available
-  if (window.gtag) {
-    window.gtag('event', metric.name, {
-      value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
-      event_category: 'Web Vitals',
-      event_label: metric.id,
-      non_interaction: true,
-    });
-  }
-
-  // You can also send to your own analytics endpoint
-  // fetch('/api/analytics', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({
-  //     name: metric.name,
-  //     value: metric.value,
-  //     delta: metric.delta,
-  //     id: metric.id,
-  //     entries: metric.entries,
-  //   }),
-  // });
+  // Add to queue for batch processing
+  analyticsQueue.push(metric);
+  
+  // Process queue with debouncing
+  requestIdleCallback ? requestIdleCallback(processAnalyticsQueue) : setTimeout(processAnalyticsQueue, 0);
 };
 
 export const measureWebVitals = () => {
@@ -114,13 +106,29 @@ export const initPerformanceMonitoring = () => {
   measureWebVitals();
   monitorResources();
   
-  // Log initial page load time
+  // Log initial page load time using modern Navigation Timing API
   window.addEventListener('load', () => {
-    const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-    console.log(`[Performance] Total page load time: ${loadTime}ms`);
-    
-    if (loadTime > 3000) {
-      console.warn('[Performance] Page load time is above 3s - Consider further optimizations');
+    // Use modern Navigation Timing API if available
+    if (performance.getEntriesByType && performance.getEntriesByType('navigation').length > 0) {
+      const navigationEntry = performance.getEntriesByType('navigation')[0];
+      const loadTime = navigationEntry.loadEventEnd - navigationEntry.fetchStart;
+      console.log(`[Performance] Total page load time: ${Math.round(loadTime)}ms`);
+      
+      if (loadTime > 3000) {
+        console.warn('[Performance] Page load time is above 3s - Consider further optimizations');
+      }
+    } else {
+      // Fallback to deprecated API with suppression
+      try {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log(`[Performance] Total page load time: ${loadTime}ms (fallback)`);
+        
+        if (loadTime > 3000) {
+          console.warn('[Performance] Page load time is above 3s - Consider further optimizations');
+        }
+      } catch (e) {
+        console.warn('[Performance] Could not measure page load time');
+      }
     }
   });
 };

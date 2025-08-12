@@ -4,21 +4,35 @@ import Nav from '../components/nav';
 import Header from '../components/header';
 import Footer from '../components/footer';
 
-// Lazy load non-critical components
-const Container = lazy(() => import('../components/Layout/index.js'));
-const Carousel = lazy(() => import('../components/carousel/carousel'));
-const Number = lazy(() => import('../components/numberDiv'));
-const Salery = lazy(() => import('../components/salerySection'));
-const Team = lazy(() => import('../components/team/team'));
-const Component = lazy(() => import('../components/3rdLastComponent'));
-const Hero = lazy(() => import('../components/hero'));
-
-// Loading component
-const LoadingSpinner = () => (
-  <div className="flex justify-center items-center h-32">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-  </div>
+// Lazy load non-critical components with preload hints
+const Container = lazy(() => 
+  import(/* webpackChunkName: "container" */ '../components/Layout/index.js')
 );
+const Carousel = lazy(() => 
+  import(/* webpackChunkName: "carousel" */ '../components/carousel/carousel')
+);
+const Number = lazy(() => 
+  import(/* webpackChunkName: "number" */ '../components/numberDiv')
+);
+const Salery = lazy(() => 
+  import(/* webpackChunkName: "salary" */ '../components/salerySection')
+);
+const Team = lazy(() => 
+  import(/* webpackChunkName: "team" */ '../components/team/team')
+);
+const Component = lazy(() => 
+  import(/* webpackChunkName: "component" */ '../components/3rdLastComponent')
+);
+const Hero = lazy(() => 
+  import(/* webpackChunkName: "hero" */ '../components/hero')
+);
+
+// Optimized loading component with reduced layout shift
+const LoadingSpinner = React.memo(() => (
+  <div className="flex justify-center items-center h-32 min-h-[8rem]">
+    <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-gray-900"></div>
+  </div>
+));
 
 const Home = () => {
   const location = useLocation();
